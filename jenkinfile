@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                // Example: Running a shell command
+                sh 'echo "Building"'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Example: Running a Maven test command
+                sh 'mvn test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Example: Deploying to a remote server
+                sh 'echo "Deploying"'
+            }
+        }
+    }
+    
+    post {
+        success {
+            // Actions to take if the pipeline succeeds
+            echo 'Pipeline succeeded! Sending notifications...'
+        }
+        failure {
+            // Actions to take if the pipeline fails
+            echo 'Pipeline failed! Sending notifications...'
+        }
+    }
+}
